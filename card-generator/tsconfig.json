@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
