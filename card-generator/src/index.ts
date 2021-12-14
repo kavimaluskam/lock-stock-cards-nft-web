@@ -1,26 +1,38 @@
-import Card from "./card";
-import { Suit, Rank, Character } from "./constants";
+import { draw, writeMetadata } from "./draw";
+import { Suit, Rank, Character } from "./type";
+import { initFont } from "./card";
 
 const suitKeys = Object.keys(Suit);
 const rankKeys = Object.keys(Rank);
 const characterKeys = Object.keys(Character);
 
-suitKeys.map((suitKey, suitIndex) => {
-  const suit = Suit[suitKey];
+const main = async (): Promise<void> => {
+  initFont();
 
-  rankKeys.map((rankKey, rankIndex) => {
-    const rank = Rank[rankKey];
+  let characterIndex = -1;
+  let suitIndex = -1;
+  let rankIndex = -1;
 
-    characterKeys.map((characterKey, characterIndex) => {
-      const character = Character[characterKey];
+  for (const characterKey of characterKeys) {
+    characterIndex++;
+    suitIndex = -1;
 
-      const index =
-        (suitIndex * rankKeys.length + rankIndex) * characterKeys.length +
-        characterIndex;
+    for (const suitKey of suitKeys) {
+      suitIndex++;
+      rankIndex = -1;
 
-      const card = new Card(suit, rank, character);
+      for (const rankKey of rankKeys) {
+        rankIndex++;
 
-      card.Draw(`${index}`);
-    });
-  });
-});
+        const index =
+          (characterIndex * suitKeys.length + suitIndex) * rankKeys.length +
+          rankIndex;
+
+        await draw(characterKey, suitKey, rankKey, index);
+        await writeMetadata(characterKey, suitKey, rankKey, index);
+      }
+    }
+  }
+};
+
+main();
