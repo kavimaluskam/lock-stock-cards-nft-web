@@ -1,42 +1,40 @@
-export const CARD_WIDTH = 450;
-export const CARD_HEIGHT = 700;
-export const CARD_RADIUS = 20;
-export const CARD_BACKGROUND = "#fff";
+export const LAYER_SOURCE_PATH = "./layers";
+export const DIST_PATH = "../assets";
 
-export const SUIT_SIZE = 60;
-export const SUIT_PX = 25;
-export const SUIT_PY = 100;
+export const CARD = {
+  WIDTH: 450,
+  HEIGHT: 700,
+  RADIUS: 20,
+  BACKGROUND: "#fff",
+};
 
-export const RANK_FONT_SIZE = 60;
-export const RANK_FONT = "card";
-export const RANK_PL = 35;
-export const RANK_PR = 375;
-export const RANK_10_PX_ADJUSTMENT = -20;
-export const RANK_PY = 80;
+export const SUIT = {
+  SIZE: 60,
+  PX: 25,
+  PY: 100,
+};
 
-export enum Character {
-  Eddie = "eddie",
-}
+export const RANK = {
+  FONT_SIZE: 60,
+  FONT: "card",
+  PL: 35,
+  PR: 375,
+  PY: 80,
+  FONT_RED: "#de002c",
+  FONT_BLACK: "#000",
+  TEN_PX_ADJUSTMENT: -20,
+};
 
-export enum Suit {
-  SPADES = "spades",
-  HEARTS = "hearts",
-  CLUBS = "clubs",
-  DIAMONDS = "diamonds",
-}
+export const CHARACTER = {
+  WIDTH: 288,
+  HEIGHT: 234,
+  PX: 81,
+  PY: 116,
+};
 
-export enum Rank {
-  TWO = "2",
-  THREE = "3",
-  FOUR = "4",
-  FIVE = "5",
-  SIX = "6",
-  SEVEN = "7",
-  EIGHT = "8",
-  NINE = "9",
-  TEN = "10",
-  JACK = "J",
-  QUEEN = "Q",
-  KING = "K",
-  ACE = "A",
-}
+export const COLLECTION = {
+  NAME: "Lock, Stock, and Two Smoking Barrels Cards NFT",
+  FAMILY: "LS2SB Cards",
+};
+
+export const WALLET_ADDRESS = "AbT4VmXgGY7aDnSn39b66PT9CPbY2VFU3Wtz3381TWR5";

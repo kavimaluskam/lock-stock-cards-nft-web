@@ -1,13 +1,19 @@
 {
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
     "canvas": "^2.8.0",
+    "get-pixels": "^3.3.3",
     "gifencoder": "^2.0.1",
+    "jest": "^27.4.4",
+    "save-pixels": "^2.3.6",
+    "ts-jest": "^27.1.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "test": "jest"
   }
 }
