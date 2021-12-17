@@ -1,9 +1,14 @@
 import { createCanvas, Canvas, Image, registerFont } from "canvas";
-import { RANK } from "./constants";
+import { CARD_TTF_PATH, RANK } from "./constants";
 
+/**
+ * Register the canvas font saved on constants package.
+ * Should init before creating any canvas instance.
+ */
 export const initFont = () => {
-  registerFont("./assets/fonts/card.ttf", { family: RANK.FONT });
+  registerFont(CARD_TTF_PATH, { family: RANK.FONT });
 };
+
 /**
  * Create a a plain canvas with given dimensions for the card NFT.
  *
@@ -106,6 +111,21 @@ export const drawImageOnCanvasCorners = (
   return newCanvas;
 };
 
+/**
+ * Writing text on the 4 corners on a given background canvas,
+ * with given font style and paddings.
+ *
+ * @param background - The background canvas.
+ * @param text - The given text to be written on corners.
+ * @param fontSize - The font size of the text.
+ * @param fontFamily - The font family of the text.
+ * @param fontColor - The font color of the text.
+ * @param pl - The padding of text on left.
+ * @param pr - The padding of text on right.
+ * @param py - The padding of text on y-axis.
+ *
+ * @returns The background canvas with the text written on corners.
+ */
 export const drawTextOnCanvasCorner = (
   background: Canvas,
   text: string,
@@ -143,7 +163,20 @@ export const drawTextOnCanvasCorner = (
   return newCanvas;
 };
 
-export const drawImageOnCanvasCenter = (
+/**
+ * Drawing mirrored canvas image on the center on a given background canvas,
+ * with given image size and paddings.
+ *
+ * @param background - The background fill color to be use.
+ * @param image - The image to be drawn on center.
+ * @param px - The padding of new image on x axis.
+ * @param py - The padding of new image on y axis.
+ * @param imageWidth - The width of the image to be drawn on background.
+ * @param imageHeight - The height of the image to be drawn on background.
+ *
+ * @returns The background canvas with the image drawn on center.
+ */
+export const drawMirroredImageOnCanvasCenter = (
   background: Canvas,
   image: Canvas | Image,
   px: number,

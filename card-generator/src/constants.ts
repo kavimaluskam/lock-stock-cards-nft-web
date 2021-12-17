@@ -1,35 +1,36 @@
 export const LAYER_SOURCE_PATH = "./layers";
 export const DIST_PATH = "../assets";
+export const CARD_TTF_PATH = "./assets/fonts/card.ttf";
 
 export const CARD = {
-  WIDTH: 450,
-  HEIGHT: 700,
-  RADIUS: 20,
+  WIDTH: 360,
+  HEIGHT: 560,
+  RADIUS: 16,
   BACKGROUND: "#fff",
 };
 
 export const SUIT = {
-  SIZE: 60,
-  PX: 25,
-  PY: 100,
+  SIZE: 48,
+  PX: 20,
+  PY: 80,
 };
 
 export const RANK = {
-  FONT_SIZE: 60,
+  FONT_SIZE: 48,
   FONT: "card",
-  PL: 35,
-  PR: 375,
-  PY: 80,
+  PL: 28,
+  PR: 300,
+  PY: 64,
   FONT_RED: "#de002c",
   FONT_BLACK: "#000",
-  TEN_PX_ADJUSTMENT: -20,
+  TEN_PX_ADJUSTMENT: -16,
 };
 
 export const CHARACTER = {
-  WIDTH: 288,
-  HEIGHT: 234,
-  PX: 81,
-  PY: 116,
+  WIDTH: 230,
+  HEIGHT: 188,
+  PX: 65,
+  PY: 92,
 };
 
 export const COLLECTION = {

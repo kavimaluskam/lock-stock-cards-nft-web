@@ -3,7 +3,7 @@ import {
   createCardBackgroundCanvas,
   drawImageOnCanvasCorners,
   drawTextOnCanvasCorner,
-  drawImageOnCanvasCenter,
+  drawMirroredImageOnCanvasCenter,
 } from "./card";
 import { importGifToCanvasFrames, exportGifFromCanvasFrames } from "./gif";
 import { Suit, Rank, Character } from "./type";
@@ -19,6 +19,16 @@ import {
 } from "./constants";
 import * as fs from "fs";
 
+/**
+ * Draw an NFT card to ${index}.gif with given suit, rank and character.
+ *
+ * @param characterKey - The key of character enum to be used.
+ * @param suitKey - The key of suit enum to be used.
+ * @param rankKey - The key of rank enum to be used.
+ * @param index - The index of the card in the collection.
+ *
+ * @returns A promise that resolves to the canvas of the gif card.
+ */
 export const draw = async (
   characterKey: string,
   suitKey: string,
@@ -63,20 +73,32 @@ export const draw = async (
     `${LAYER_SOURCE_PATH}/characters/${characterKey}.gif`
   );
 
-  const cardFrames = characterFrames.map((frame) =>
-    drawImageOnCanvasCenter(
-      cardWithSuitAndRank,
-      frame,
-      CHARACTER.PX,
-      CHARACTER.PY,
-      CHARACTER.WIDTH,
-      CHARACTER.HEIGHT
-    )
-  );
+  const cardFrames = characterFrames
+    .filter((_, k) => k % 4)
+    .map((frame) =>
+      drawMirroredImageOnCanvasCenter(
+        cardWithSuitAndRank,
+        frame,
+        CHARACTER.PX,
+        CHARACTER.PY,
+        CHARACTER.WIDTH,
+        CHARACTER.HEIGHT
+      )
+    );
 
   await exportGifFromCanvasFrames(`${DIST_PATH}/${index}.gif`, cardFrames, 50);
 };
 
+/**
+ * Write the NFT card metadata to ${index}.json file.
+ *
+ * @param characterKey - The key of character enum to be used.
+ * @param suitKey  - The key of suit enum to be used.
+ * @param rankKey - The key of rank enum to be used.
+ * @param index - The index of the card in the collection.
+ *
+ * @returns A promise that resolves to the writing process of metadata file.
+ */
 export const writeMetadata = async (
   characterKey: string,
   suitKey: string,

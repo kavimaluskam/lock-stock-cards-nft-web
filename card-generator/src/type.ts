@@ -10,10 +10,10 @@ export enum Character {
 }
 
 export enum Suit {
-  Spades = "Spades",
-  Hearts = "Hearts",
-  Clubs = "Clubs",
-  Diamonds = "Diamonds",
+  Spades = "♠️",
+  Hearts = "♥️",
+  Clubs = "♣️",
+  Diamonds = "♦️",
 }
 
 export enum Rank {
