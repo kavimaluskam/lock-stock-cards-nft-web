@@ -1,5 +1,6 @@
 export const LAYER_SOURCE_PATH = "./layers";
 export const DIST_PATH = "../assets";
+export const CARD_TTF_PATH = "./assets/fonts/card.ttf";
 
 export const CARD = {
   WIDTH: 360,
