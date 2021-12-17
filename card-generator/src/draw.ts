@@ -19,6 +19,16 @@ import {
 } from "./constants";
 import * as fs from "fs";
 
+/**
+ * Draw an NFT card to ${index}.gif with given suit, rank and character.
+ *
+ * @param characterKey - The key of character enum to be used.
+ * @param suitKey - The key of suit enum to be used.
+ * @param rankKey - The key of rank enum to be used.
+ * @param index - The index of the card in the collection.
+ *
+ * @returns A promise that resolves to the canvas of the gif card.
+ */
 export const draw = async (
   characterKey: string,
   suitKey: string,
@@ -79,6 +89,16 @@ export const draw = async (
   await exportGifFromCanvasFrames(`${DIST_PATH}/${index}.gif`, cardFrames, 50);
 };
 
+/**
+ * Write the NFT card metadata to ${index}.json file.
+ *
+ * @param characterKey - The key of character enum to be used.
+ * @param suitKey  - The key of suit enum to be used.
+ * @param rankKey - The key of rank enum to be used.
+ * @param index - The index of the card in the collection.
+ *
+ * @returns A promise that resolves to the writing process of metadata file.
+ */
 export const writeMetadata = async (
   characterKey: string,
   suitKey: string,
