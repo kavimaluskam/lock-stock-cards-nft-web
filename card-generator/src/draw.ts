@@ -3,7 +3,7 @@ import {
   createCardBackgroundCanvas,
   drawImageOnCanvasCorners,
   drawTextOnCanvasCorner,
-  drawImageOnCanvasCenter,
+  drawMirroredImageOnCanvasCenter,
 } from "./card";
 import { importGifToCanvasFrames, exportGifFromCanvasFrames } from "./gif";
 import { Suit, Rank, Character } from "./type";
@@ -63,16 +63,18 @@ export const draw = async (
     `${LAYER_SOURCE_PATH}/characters/${characterKey}.gif`
   );
 
-  const cardFrames = characterFrames.map((frame) =>
-    drawImageOnCanvasCenter(
-      cardWithSuitAndRank,
-      frame,
-      CHARACTER.PX,
-      CHARACTER.PY,
-      CHARACTER.WIDTH,
-      CHARACTER.HEIGHT
-    )
-  );
+  const cardFrames = characterFrames
+    .filter((_, k) => k % 4)
+    .map((frame) =>
+      drawMirroredImageOnCanvasCenter(
+        cardWithSuitAndRank,
+        frame,
+        CHARACTER.PX,
+        CHARACTER.PY,
+        CHARACTER.WIDTH,
+        CHARACTER.HEIGHT
+      )
+    );
 
   await exportGifFromCanvasFrames(`${DIST_PATH}/${index}.gif`, cardFrames, 50);
 };
